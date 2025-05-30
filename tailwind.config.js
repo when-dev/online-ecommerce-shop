@@ -9,13 +9,15 @@ module.exports = {
     colors: {
       white: "#fff",
       grey: {
+        100: "#6D6D6D",
         300: "#666",
         400: "#4a4d4e",
         500: "#3C3F40",
         600: "#333",
         650: "#303233"
       },
-      red: "#e60000"
+      red: "#e60000",
+      orange: "#fe6a00",
     },
     extend: {
       fontFamily: {

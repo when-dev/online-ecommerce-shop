@@ -5,9 +5,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title></title>
+        <title>New District</title>
       </Head>
-      <h1>First run</h1>
     </>
   )
 }
