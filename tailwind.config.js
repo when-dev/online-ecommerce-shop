@@ -9,15 +9,15 @@ module.exports = {
     colors: {
       white: "#fff",
       grey: {
+        50: "#FAFAFA",
         100: "#6D6D6D",
+        200: "#afafaf",
         300: "#666",
         400: "#4a4d4e",
         500: "#3C3F40",
         600: "#333",
         650: "#303233"
       },
-      red: "#e60000",
-      orange: "#fe6a00",
     },
     extend: {
       fontFamily: {
@@ -27,7 +27,10 @@ module.exports = {
     }
   },
   variants: {
-    extend: {}
+    extend: {
+      display: ["group-hover", "group-focus"],
+      rotate: ["group-hover", "group-focus"]
+    }
   },
   plugins: []
 };
