@@ -1,5 +1,8 @@
 # Online Ecommerce Shop
 
+![Version](https://img.shields.io/github/package-json/v/when-dev/online-ecommerce-shop?color=green)
+![Code-Size](https://img.shields.io/github/languages/code-size/when-dev/online-ecommerce-shop)
+
 It's a pet project to showcase my general skills in a full-stack development.
 
 This project is about my capability to build a modern ecommerce website.
@@ -8,6 +11,8 @@ This project is about my capability to build a modern ecommerce website.
 
 - [Setting Up](#Setting-Up)
 - [Technology Stack](#Technology-Stack)
+- [Commits Naming](#Commits-Naming)
+- [Workflow](#Workflow)
 
 ## Setting Up
 
@@ -40,3 +45,19 @@ _In the nearest future the stack above might also include:_
 1. Either Stripe.js or pure payment handling
 2. Node.js (for handling payments)
 3. Framer Motion
+
+## Commits Naming
+
+Here are a few git naming conventions that I follow(Every commit has to start with one of these):
+
+- **feat**: - a new functionality is added
+- **dev**: - a new dependency is addedm a new work flow is applied etc.
+- **fix**: - bug fixes
+- **test**: - writing tests
+- **docs**: - modifying documentation
+
+## Workflow
+
+This project is following **Git Flow** convention as shown below.
+
+![Git Flow](/docs/gitflow.png)
