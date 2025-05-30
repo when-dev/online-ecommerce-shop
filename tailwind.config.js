@@ -18,6 +18,9 @@ module.exports = {
         600: "#333",
         650: "#303233"
       },
+      red: "#FF0000",
+      black: "#000",
+      orange: "#FF6600"
     },
     extend: {
       fontFamily: {

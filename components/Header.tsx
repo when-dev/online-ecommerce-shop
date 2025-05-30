@@ -17,16 +17,17 @@ const staticLinks = [
 ];
 
 const Cart: FC<{ items?: number }> = ({ items }) => {
+  const showBadge = typeof items === "number" && items > 0;
+
   return (
-    <button className="text-grey-300 w-8 relative">
-      <div
-        className={`absolute w-4 h-4 bg-red -right-1.5 -top-1 rounded-full text-white font-regular text-xs
-        ${items ? "block" : "hidden"}`}
-      >
-        {Math.min(items as number, 99)}
-      </div>
-      <CartIcon />
-    </button>
+    <div className="relative w-8 h-8 flex items-center justify-center">
+      {showBadge && (
+        <div className="absolute bottom-4 left-5 w-4 h-4 bg-orange rounded-full text-white text-[10px] flex items-center justify-center z-9">
+          {Math.min(items, 99)}
+        </div>
+      )}
+      <CartIcon className="w-7 h-7" />
+    </div>
   );
 };
 
@@ -48,7 +49,7 @@ const Header: FC = () => {
       </div>
       <div className="hidden lg:flex flex-col w-full">
         <div className="bg-grey-50 text-grey-500 w-full border-b border-grey-100">
-          <div className="flex justify-between items-center h-8 max-w-7xl mx-auto text-sm px-4">
+          <div className="flex justify-between items-center h-12 max-w-7xl mx-auto text-sm px-4">
             <div className="flex items-center space-x-6">
               {staticLinks.map(({ name, link }) => (
                 <Link href={link} key={name} className="hover:underline">
@@ -62,7 +63,7 @@ const Header: FC = () => {
               </a>
               <button className="flex items-center hover:underline">
                 <GeoIcon className="w-3 h-3 mr-1" />
-                Донецк
+                Краснодар
               </button>
               <div className="relative group flex-shrink-0">
                 <button className="flex items-center hover:underline">
@@ -71,7 +72,7 @@ const Header: FC = () => {
                 </button>
 
                 <div className="absolute right-0 top-full flex-col bg-white border border-grey-200 px-3 py-2 rounded shadow-md hidden group-hover:flex z-10 text-sm min-w-[60px] whitespace-nowrap">
-                  <button className="hover:text-red">Eng</button>
+                  <button className="hover:text-orange">Eng</button>
                 </div>
               </div>
             </div>
