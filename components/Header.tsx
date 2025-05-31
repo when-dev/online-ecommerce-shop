@@ -1,11 +1,4 @@
-import {
-  FC,
-  useState,
-  SetStateAction,
-  Dispatch,
-  MouseEvent,
-  TouchEvent
-} from "react";
+import { FC, useState, MouseEvent, TouchEvent, ReactNode } from "react";
 import Logo from "public/img/logo.svg";
 import MenuIcon from "public/img/menu.svg";
 import SearchIcon from "public/img/search.svg";
@@ -26,11 +19,11 @@ const staticLinks = [
 
 const Dialog: FC<{
   opened: boolean;
-  setter: Dispatch<SetStateAction<boolean>>;
-  children: React.ReactNode;
-}> = ({ children, opened, setter }) => {
-  const close = () => setter(false);
-  const stop = (e: React.MouseEvent | React.TouchEvent) => e.stopPropagation();
+  onClose: () => void;
+  children: ReactNode;
+}> = ({ children, opened, onClose }) => {
+  const closeDialog = (e: MouseEvent | TouchEvent) => onClose();
+  const stopPropagation = (e: MouseEvent | TouchEvent) => e.stopPropagation();
 
   return (
     <div
@@ -38,7 +31,7 @@ const Dialog: FC<{
         fixed inset-0 z-50 flex
         ${opened ? "pointer-events-auto" : "pointer-events-none"}
       `}
-      onClick={close}
+      onClick={closeDialog}
     >
       <div
         className={`
@@ -47,7 +40,7 @@ const Dialog: FC<{
         `}
       />
       <div
-        onClick={stop}
+        onClick={stopPropagation}
         className={`
           h-full bg-white shadow-lg fixed top-0 left-0
           transform transition-transform duration-300 ease-in-out
@@ -76,28 +69,41 @@ const Cart: FC<{ items?: number }> = ({ items }) => {
   );
 };
 
-const Product: FC = () => {
+const Product: FC<{ onToggle?: () => void; isOpen?: boolean }> = ({
+  onToggle,
+  isOpen
+}) => {
   return (
-    <button className="flex py-3 px-5 items-center">
-      <span className="mr-5 text-xs">icon</span>
-      <p className="flex-1 text-left text-base">Телефоны</p>
-      <span className="text-grey-400 transform rotate-180 w-2">
-        <ArrowIcon />
-      </span>
-    </button>
+    <>
+      <button className="flex py-3 px-5 items-center w-full" onClick={onToggle}>
+        <p className="flex-1 text-left text-base">Каталог</p>
+        <span
+          className={`
+            text-grey-400 transform transition-transform duration-300 w-1.5
+            ${isOpen ? "rotate-0" : "-rotate-90"}
+          `}
+        >
+          <ArrowIcon />
+        </span>
+      </button>
+      {isOpen && (
+        <div className="pl-12 flex flex-col gap-2 text-sm text-left">
+          <button className="py-1 text-left">Телефоны</button>
+          <button className="py-1 text-left">Ноутбуки</button>
+          <button className="py-1 text-left">Планшеты</button>
+        </div>
+      )}
+    </>
   );
 };
 
 const MobileMenu: FC = () => {
-  const [isMenuOpened, setIsMenuOpened] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpened(!isMenuOpened);
-  };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCatalogOpen, setIsCatalogOpen] = useState(false);
 
   return (
     <div className="relative flex items-center justify-between h-14 px-4 w-full lg:hidden">
-      <button className="w-6 h-6 z-10" onClick={toggleMenu}>
+      <button className="w-6 h-6 z-10" onClick={() => setIsMenuOpen(true)}>
         <BurgerIcon />
       </button>
       <div className="absolute left-1/2 transform -translate-x-1/2 w-16 z-0">
@@ -109,10 +115,10 @@ const MobileMenu: FC = () => {
         <SearchIcon />
       </button>
 
-      <Dialog opened={isMenuOpened} setter={setIsMenuOpened}>
+      <Dialog opened={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
         <div className="flex flex-col h-full bg-white">
           <div className="flex items-center justify-between h-14 px-4 border-b border-grey-100">
-            <button className="w-5 h-5" onClick={toggleMenu}>
+            <button className="w-5 h-5" onClick={() => setIsMenuOpen(false)}>
               <CrossIcon />
             </button>
             <div className="flex-1 flex justify-center md:hidden">
@@ -123,8 +129,10 @@ const MobileMenu: FC = () => {
             </button>
           </div>
           <div className="flex-1 overflow-y-auto">
-            <Product />
-            <Product />
+            <Product
+              onToggle={() => setIsCatalogOpen(prev => !prev)}
+              isOpen={isCatalogOpen}
+            />
           </div>
         </div>
       </Dialog>
