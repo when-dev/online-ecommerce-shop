@@ -17,7 +17,7 @@ module.exports = {
         500: "#3C3F40",
         600: "#333",
         650: "#303233",
-        transparent: "#333333a6",
+        transparent: "#333333a6"
       },
       red: "#FF0000",
       black: "#000",
@@ -27,6 +27,11 @@ module.exports = {
       fontFamily: {
         regular: ["Vodafone Rg", "sans"],
         light: ["Vodafone Lt", "sans"]
+      },
+      screens: {
+        sm: "480px",
+        md: "768px",
+        lg: "1024px"
       }
     }
   },

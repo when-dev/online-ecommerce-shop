@@ -1,4 +1,11 @@
-import type { FC } from "react";
+import {
+  FC,
+  useState,
+  SetStateAction,
+  Dispatch,
+  MouseEvent,
+  TouchEvent
+} from "react";
 import Logo from "public/img/logo.svg";
 import MenuIcon from "public/img/menu.svg";
 import SearchIcon from "public/img/search.svg";
@@ -6,6 +13,7 @@ import BurgerIcon from "public/img/burger.svg";
 import ArrowIcon from "public/img/arrow.svg";
 import GeoIcon from "public/img/geo-point.svg";
 import CartIcon from "public/img/cart.svg";
+import CrossIcon from "public/img/cross.svg";
 import Input from "../components/Input";
 import Link from "next/link";
 
@@ -15,6 +23,43 @@ const staticLinks = [
   { name: "Акции", link: "/" },
   { name: "Магазины", link: "/" }
 ];
+
+const Dialog: FC<{
+  opened: boolean;
+  setter: Dispatch<SetStateAction<boolean>>;
+  children: React.ReactNode;
+}> = ({ children, opened, setter }) => {
+  const close = () => setter(false);
+  const stop = (e: React.MouseEvent | React.TouchEvent) => e.stopPropagation();
+
+  return (
+    <div
+      className={`
+        fixed inset-0 z-50 flex
+        ${opened ? "pointer-events-auto" : "pointer-events-none"}
+      `}
+      onClick={close}
+    >
+      <div
+        className={`
+          absolute inset-0 bg-black transition-opacity duration-300
+          ${opened ? "opacity-50" : "opacity-0"}
+        `}
+      />
+      <div
+        onClick={stop}
+        className={`
+          h-full bg-white shadow-lg fixed top-0 left-0
+          transform transition-transform duration-300 ease-in-out
+          ${opened ? "translate-x-0" : "-translate-x-full"}
+          w-full md:w-[400px]
+        `}
+      >
+        {children}
+      </div>
+    </div>
+  );
+};
 
 const Cart: FC<{ items?: number }> = ({ items }) => {
   const showBadge = typeof items === "number" && items > 0;
@@ -31,10 +76,28 @@ const Cart: FC<{ items?: number }> = ({ items }) => {
   );
 };
 
-const MobileHeader: FC = () => {
+const Product: FC = () => {
+  return (
+    <button className="flex py-3 px-5 items-center">
+      <span className="mr-5 text-xs">icon</span>
+      <p className="flex-1 text-left text-base">Телефоны</p>
+      <span className="text-grey-400 transform rotate-180 w-2">
+        <ArrowIcon />
+      </span>
+    </button>
+  );
+};
+
+const MobileMenu: FC = () => {
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpened(!isMenuOpened);
+  };
+
   return (
     <div className="relative flex items-center justify-between h-14 px-4 w-full lg:hidden">
-      <button className="w-6 h-6 z-10">
+      <button className="w-6 h-6 z-10" onClick={toggleMenu}>
         <BurgerIcon />
       </button>
       <div className="absolute left-1/2 transform -translate-x-1/2 w-16 z-0">
@@ -45,11 +108,31 @@ const MobileHeader: FC = () => {
       <button className="w-5 z-10">
         <SearchIcon />
       </button>
+
+      <Dialog opened={isMenuOpened} setter={setIsMenuOpened}>
+        <div className="flex flex-col h-full bg-white">
+          <div className="flex items-center justify-between h-14 px-4 border-b border-grey-100">
+            <button className="w-5 h-5" onClick={toggleMenu}>
+              <CrossIcon />
+            </button>
+            <div className="flex-1 flex justify-center md:hidden">
+              <Logo className="w-20 h-auto" />
+            </div>
+            <button className="w-5 h-5 md:hidden">
+              <SearchIcon />
+            </button>
+          </div>
+          <div className="flex-1 overflow-y-auto">
+            <Product />
+            <Product />
+          </div>
+        </div>
+      </Dialog>
     </div>
   );
 };
 
-const DesktopHeader: FC = () => {
+const DesktopMenu: FC = () => {
   return (
     <div className="hidden lg:flex flex-col w-full">
       <div className="bg-grey-50 text-grey-500 w-full border-b border-grey-100">
@@ -109,8 +192,8 @@ const DesktopHeader: FC = () => {
 const Header: FC = () => {
   return (
     <header className="flex items-center bg-white border-b border-grey-100 lg:border-b-0">
-      <MobileHeader />
-      <DesktopHeader />
+      <MobileMenu />
+      <DesktopMenu />
     </header>
   );
 };
