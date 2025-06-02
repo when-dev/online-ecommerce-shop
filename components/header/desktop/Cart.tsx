@@ -1,5 +1,5 @@
 import { FC } from "react";
-import CartIcon from "public/img/cart.svg";
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Cart: FC<{ items?: number }> = ({ items }) => {
 	const showBadge = typeof items === "number" && items > 0;
@@ -11,7 +11,7 @@ const Cart: FC<{ items?: number }> = ({ items }) => {
 					{Math.min(items, 99)}
 				</div>
 			)}
-			<CartIcon className="w-7 h-7" />
+			<FaShoppingCart className="w-7 h-7" />
 		</div>
 	);
 };
