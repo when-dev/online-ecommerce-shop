@@ -7,11 +7,12 @@ import {
   FaHeart,
   FaUser
 } from "react-icons/fa";
+import Cart from "../desktop/Cart";
 
 const navItems = [
   { href: "/", label: "Главная", icon: <FaHome /> },
   { href: "/", label: "Каталог", icon: <FaThLarge /> },
-  { href: "/", label: "Корзина", icon: <FaShoppingCart /> },
+  { href: "/", label: "Корзина", icon: <Cart items={3} /> },
   { href: "/", label: "Избранное", icon: <FaHeart /> },
   { href: "/", label: "Войти", icon: <FaUser /> }
 ];
@@ -28,7 +29,7 @@ const BottomBar = () => {
           href={item.href}
           className="flex flex-col items-center flex-1 py-1"
         >
-          <span className="text-xl mb-0.5">{item.icon}</span>
+          <span className="text-xl mb-0.5 mt-1.5">{item.icon}</span>
           <span className="text-xs">{item.label}</span>
         </Link>
       ))}
