@@ -43,13 +43,24 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
     <div className="w-full md:px-6 lg:px-4">
       <div className="relative w-full max-w-[1240px] mx-auto md:mt-6">
         <div
-          className="absolute top-0 right-0 w-full bg-[#ebebeb] z-0 translate-x-[12px] translate-y-[8px] opacity-60 pointer-events-none"
-          style={{ height: "calc(100% - 8px)" }}
+          className="absolute z-0 bg-[#ebebeb] pointer-events-none hidden md:block"
+          style={{
+            top: "8px",
+            bottom: "8px",
+            left: "12px",
+            right: "-12px"
+          }}
         ></div>
         <div
-          className="absolute top-0 right-0 w-full bg-[#cacaca] z-10 translate-x-[6px] translate-y-[4px] opacity-80 pointer-events-none"
-          style={{ height: "calc(100% - 4px)" }}
+          className="absolute z-10 bg-[#cacaca] pointer-events-none hidden md:block"
+          style={{
+            top: "4px",
+            bottom: "4px",
+            left: "6px",
+            right: "-6px"
+          }}
         ></div>
+
         <div
           className="relative z-20 overflow-hidden shadow-lg bg-white cursor-pointer banner-hover-gradient"
           onMouseEnter={handlerMouseEnter}
