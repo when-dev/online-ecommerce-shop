@@ -51,7 +51,7 @@ _In the nearest future the stack above might also include:_
 Here are a few git naming conventions that I follow(Every commit has to start with one of these):
 
 - **feat**: - a new functionality is added
-- **dev**: - a new dependency is addedm a new work flow is applied, the version is change and etc.
+- **dev**: - a new dependency is added a new work flow is applied, the version is change and etc.
 - **fix**: - bug fixes
 - **test**: - writing tests
 - **docs**: - modifying documentation

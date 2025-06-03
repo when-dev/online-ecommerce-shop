@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
 
     return config;
   },
+  devIndicators: false,
   reactStrictMode: true,
 };
 
