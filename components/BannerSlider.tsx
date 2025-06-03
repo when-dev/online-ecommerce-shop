@@ -43,7 +43,7 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
     <div className="w-full md:px-6 lg:px-4">
       <div className="relative w-full max-w-[1240px] mx-auto md:mt-6">
         <div
-          className="absolute z-0 bg-[#ebebeb] pointer-events-none"
+          className="absolute z-0 bg-[#ebebeb] pointer-events-none hidden md:block"
           style={{
             top: "8px",
             bottom: "8px",
@@ -52,7 +52,7 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
           }}
         ></div>
         <div
-          className="absolute z-10 bg-[#cacaca] pointer-events-none"
+          className="absolute z-10 bg-[#cacaca] pointer-events-none hidden md:block"
           style={{
             top: "4px",
             bottom: "4px",
