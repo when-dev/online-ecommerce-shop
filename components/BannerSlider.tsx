@@ -19,8 +19,12 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
   const [progress, setProgress] = useState(0);
   const slidesCount = banners.length;
 
-  const handleAutoplayTimeLeft = (_swiper: SwiperType, time: number, p: number) => {
-    setProgress(1 - p); 
+  const handleAutoplayTimeLeft = (
+    _swiper: SwiperType,
+    time: number,
+    p: number
+  ) => {
+    setProgress(1 - p);
   };
 
   const handleSlideChange = (swiper: SwiperType) => {
@@ -37,7 +41,7 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
 
   return (
     <div className="w-full md:px-6 lg:px-4">
-      <div className="relative w-full max-w-[1240px] mx-auto mt-6">
+      <div className="relative w-full max-w-[1240px] mx-auto md:mt-6">
         <div
           className="absolute top-0 right-0 w-full bg-[#ebebeb] z-0 translate-x-[12px] translate-y-[8px] opacity-60 pointer-events-none"
           style={{ height: "calc(100% - 8px)" }}
@@ -46,8 +50,8 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
           className="absolute top-0 right-0 w-full bg-[#cacaca] z-10 translate-x-[6px] translate-y-[4px] opacity-80 pointer-events-none"
           style={{ height: "calc(100% - 4px)" }}
         ></div>
-        <div 
-          className="relative z-20 overflow-hidden shadow-lg bg-white cursor-pointer"
+        <div
+          className="relative z-20 overflow-hidden shadow-lg bg-white cursor-pointer banner-hover-gradient"
           onMouseEnter={handlerMouseEnter}
           onMouseLeave={handlerMouseLeave}
         >
@@ -67,7 +71,7 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
             onSlideChange={handleSlideChange}
             onBeforeInit={swiper => (swiperRef.current = swiper)}
             onAutoplayTimeLeft={handleAutoplayTimeLeft}
-            className="w-full"
+            className="w-full "
           >
             {banners.map((banner, idx) => (
               <SwiperSlide key={idx}>
@@ -94,9 +98,7 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
                 />
               </button>
               <div className="flex flex-col items-center min-w-[60px] mx-2">
-                <span
-                  className="text-white font-regular select-none leading-none text-sm"
-                >
+                <span className="text-white font-regular select-none leading-none text-sm">
                   {activeIndex + 1} / {slidesCount}
                 </span>
                 <div className="w-[60px] h-[2px] bg-white/40 rounded-full overflow-hidden mt-1">
