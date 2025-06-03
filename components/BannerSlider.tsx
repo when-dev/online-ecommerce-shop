@@ -1,4 +1,4 @@
-import { FC, useRef, useState, useEffect } from "react";
+import { FC, useRef, useState } from "react";
 import { Banner } from "../types/banner";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -19,31 +19,25 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
   const [progress, setProgress] = useState(0);
   const slidesCount = banners.length;
 
-  useEffect(() => {
-    let frameId: number;
-    let start = performance.now();
-
-    const animate = (now: number) => {
-      const elapsed = now - start;
-      let percent = Math.min(1, elapsed / AUTOPLAY_DELAY);
-      setProgress(percent);
-      if (percent < 1) {
-        frameId = requestAnimationFrame(animate);
-      }
-    };
-    setProgress(0);
-    frameId = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(frameId);
-  }, [activeIndex]);
+  const handleAutoplayTimeLeft = (_swiper: SwiperType, time: number, p: number) => {
+    setProgress(1 - p); 
+  };
 
   const handleSlideChange = (swiper: SwiperType) => {
     setActiveIndex(swiper.realIndex);
   };
 
+  const handlerMouseEnter = () => {
+    swiperRef.current?.autoplay?.pause();
+  };
+
+  const handlerMouseLeave = () => {
+    swiperRef.current?.autoplay?.resume();
+  };
+
   return (
-    <div className="w-full md:px-6 lg:px-4 xl:px-0">
-      <div className="relative w-full max-w-[1250px] mx-auto mt-6">
+    <div className="w-full md:px-6 lg:px-4">
+      <div className="relative w-full max-w-[1240px] mx-auto mt-6">
         <div
           className="absolute top-0 right-0 w-full bg-[#ebebeb] z-0 translate-x-[12px] translate-y-[8px] opacity-60 pointer-events-none"
           style={{ height: "calc(100% - 8px)" }}
@@ -52,7 +46,11 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
           className="absolute top-0 right-0 w-full bg-[#cacaca] z-10 translate-x-[6px] translate-y-[4px] opacity-80 pointer-events-none"
           style={{ height: "calc(100% - 4px)" }}
         ></div>
-        <div className="relative z-20 overflow-hidden shadow-lg bg-white">
+        <div 
+          className="relative z-20 overflow-hidden shadow-lg bg-white cursor-pointer"
+          onMouseEnter={handlerMouseEnter}
+          onMouseLeave={handlerMouseLeave}
+        >
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={0}
@@ -68,6 +66,7 @@ const BannerSlider: FC<BannerSliderProps> = ({ banners }) => {
             }}
             onSlideChange={handleSlideChange}
             onBeforeInit={swiper => (swiperRef.current = swiper)}
+            onAutoplayTimeLeft={handleAutoplayTimeLeft}
             className="w-full"
           >
             {banners.map((banner, idx) => (
