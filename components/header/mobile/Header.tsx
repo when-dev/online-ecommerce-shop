@@ -3,10 +3,9 @@ import Link from "next/link";
 import Tab from "./Tab";
 import Dialog from "./Dialog";
 import Logo from "public/img/logo.svg";
-import BurgerIcon from "public/img/burger.svg";
-import SearchIcon from "public/img/search.svg";
-import CrossIcon from "public/img/cross.svg";
-
+import { RxHamburgerMenu } from "react-icons/rx";
+import { RxCross2 } from "react-icons/rx";
+import { CiSearch } from "react-icons/ci";
 
 const MobileMenu: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,29 +13,29 @@ const MobileMenu: FC = () => {
 
   return (
     <div className="relative flex items-center justify-between h-14 px-4 w-full lg:hidden">
-      <button className="w-6 h-6 z-10" onClick={() => setIsMenuOpen(true)}>
-        <BurgerIcon />
+      <button className="z-10" onClick={() => setIsMenuOpen(true)}>
+        <RxHamburgerMenu className="w-6 h-6" />
       </button>
       <div className="absolute left-1/2 transform -translate-x-1/2 w-16 z-0">
         <Link href="/">
           <Logo />
         </Link>
       </div>
-      <button className="w-5 z-10">
-        <SearchIcon />
+      <button className="z-10">
+        <CiSearch className='w-6 h-6' />
       </button>
 
       <Dialog opened={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
         <div className="flex flex-col h-full bg-white">
-          <div className="flex items-center justify-between h-14 px-4 border-b border-grey-100">
+          <div className="flex items-center justify-between h-14 px-4 border-b border-grey-100/25">
             <button className="w-5 h-5" onClick={() => setIsMenuOpen(false)}>
-              <CrossIcon />
+              <RxCross2 className='w-6 h-6' />
             </button>
             <div className="flex-1 flex justify-center md:hidden">
               <Logo className="w-20 h-auto" />
             </div>
             <button className="w-5 h-5 md:hidden">
-              <SearchIcon />
+              <CiSearch className='w-6 h-6' />
             </button>
           </div>
           <div className="flex-1 overflow-y-auto">
