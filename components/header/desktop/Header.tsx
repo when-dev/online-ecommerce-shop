@@ -5,7 +5,8 @@ import Link from "next/link";
 import GeoIcon from "public/img/geo-point.svg";
 import Logo from "public/img/logo.svg";
 import ArrowIcon from "public/img/arrow.svg";
-import { FaHeart, FaThLarge, FaUser } from "react-icons/fa";
+import { FaThLarge } from "react-icons/fa";
+import { CiBookmark, CiUser } from "react-icons/ci";
 
 const staticLinks = [
   { name: "Доставка и оплата", link: "/" },
@@ -76,16 +77,16 @@ const DesktopMenu: FC = () => {
           </div>
           <div className="flex items-center space-x-4 md:space-x-6 min-w-max">
             <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors text-sm">
-              <FaUser className="text-base md:text-lg" />
+              <CiUser className="w-6 h-6" />
               <span className="text-xs">Войти</span>
             </button>
             <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors text-sm">
-              <FaHeart className="text-base md:text-lg" />
+              <CiBookmark className="w-6 h-6" />
               <span className="text-xs">Избранное</span>
             </button>
             <Link href="/">
               <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors text-sm">
-                <Cart items={3} />
+                <Cart items={3} className="w-6 h-6" />
                 <span className="text-xs">Корзина</span>
               </button>
             </Link>
