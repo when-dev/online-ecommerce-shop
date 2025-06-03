@@ -6,7 +6,7 @@ import DesktopMenu from "./desktop/Header";
 
 const Header: FC = () => {
   return (
-    <header className="flex items-center bg-white border-b border-grey-100 lg:border-b-0">
+    <header className="flex items-center bg-white border-grey-100 lg:border-b-0">
       <MobileMenu />
       <DesktopMenu />
     </header>

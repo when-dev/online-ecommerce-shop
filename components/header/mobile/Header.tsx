@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState } from "react";
 import Link from "next/link";
 import Tab from "./Tab";
 import Dialog from "./Dialog";
@@ -12,7 +12,7 @@ const MobileMenu: FC = () => {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
 
   return (
-    <div className="relative flex items-center justify-between h-14 px-4 w-full lg:hidden">
+    <div className="relative flex items-center shadow-sm justify-between h-14 px-4 md:px-6 w-full lg:hidden">
       <button className="z-10" onClick={() => setIsMenuOpen(true)}>
         <RxHamburgerMenu className="w-6 h-6" />
       </button>
@@ -22,20 +22,20 @@ const MobileMenu: FC = () => {
         </Link>
       </div>
       <button className="z-10">
-        <CiSearch className='w-6 h-6' />
+        <CiSearch className="w-6 h-6" />
       </button>
 
       <Dialog opened={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
         <div className="flex flex-col h-full bg-white">
           <div className="flex items-center justify-between h-14 px-4 border-b border-grey-100/25">
             <button className="w-5 h-5" onClick={() => setIsMenuOpen(false)}>
-              <RxCross2 className='w-6 h-6' />
+              <RxCross2 className="w-6 h-6" />
             </button>
             <div className="flex-1 flex justify-center md:hidden">
               <Logo className="w-20 h-auto" />
             </div>
             <button className="w-5 h-5 md:hidden">
-              <CiSearch className='w-6 h-6' />
+              <CiSearch className="w-6 h-6" />
             </button>
           </div>
           <div className="flex-1 overflow-y-auto">
