@@ -71,21 +71,21 @@ const DesktopMenu: FC = () => {
             </button>
           </div>
           <div className="flex justify-center w-full px-2">
-            <div className="w-full max-w-xl md:max-w-2xl">
+            <div className="w-full max-w-xl">
               <Input placeholder="Поиск по товарам" type="text" error={false} />
             </div>
           </div>
-          <div className="flex items-center space-x-4 md:space-x-6 min-w-max">
-            <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors text-sm">
+          <div className="flex items-center space-x-8 min-w-max">
+            <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors">
               <CiUser className="w-6 h-6" />
               <span className="text-xs">Войти</span>
             </button>
-            <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors text-sm">
+            <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors">
               <CiBookmark className="w-6 h-6" />
               <span className="text-xs">Избранное</span>
             </button>
             <Link href="/">
-              <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors text-sm">
+              <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors">
                 <Cart items={3} className="w-6 h-6" />
                 <span className="text-xs">Корзина</span>
               </button>
