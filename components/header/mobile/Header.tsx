@@ -1,22 +1,27 @@
 import { FC, useState } from "react";
 import Link from "next/link";
-import Tab from "./Tab";
 import Dialog from "./Dialog";
 import Logo from "public/img/logo.svg";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { RxCross2 } from "react-icons/rx";
-import { CiSearch } from "react-icons/ci";
+import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
+import { CiSearch, CiUser, CiHeart } from "react-icons/ci";
+import { MdOutlineCompare } from "react-icons/md";
+import { AiFillDollarCircle } from "react-icons/ai";
+import { BsLightningChargeFill } from "react-icons/bs";
+import { BiSolidNavigation } from "react-icons/bi";
+import { RiSunFill } from "react-icons/ri";
+import { FaWhatsapp } from "react-icons/fa";
+import ArrowSvg from "public/img/arrow.svg";
+import Cart from "../desktop/Cart";
 
 const MobileMenu: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isCatalogOpen, setIsCatalogOpen] = useState(false);
 
   return (
-    <div className="relative flex items-center shadow-sm justify-between h-14 px-4 md:px-6 w-full lg:hidden">
+    <div className="relative flex items-center shadow-sm justify-between h-14 px-4 w-full lg:hidden">
       <button className="z-10" onClick={() => setIsMenuOpen(true)}>
         <RxHamburgerMenu className="w-6 h-6" />
       </button>
-      <div className="absolute left-1/2 transform -translate-x-1/2 w-16 z-0">
+      <div className="absolute left-1/2 transform -translate-x-1/2 w-24 z-0">
         <Link href="/">
           <Logo />
         </Link>
@@ -26,24 +31,96 @@ const MobileMenu: FC = () => {
       </button>
 
       <Dialog opened={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
-        <div className="flex flex-col h-full bg-white">
-          <div className="flex items-center justify-between h-14 px-4 border-b border-grey-100/25">
-            <button className="w-5 h-5" onClick={() => setIsMenuOpen(false)}>
-              <RxCross2 className="w-6 h-6" />
-            </button>
-            <div className="flex-1 flex justify-center md:hidden">
-              <Logo className="w-20 h-auto" />
-            </div>
-            <button className="w-5 h-5 md:hidden">
-              <CiSearch className="w-6 h-6" />
+        <div className="flex flex-col h-full bg-white w-full">
+          <div className="flex items-center justify-between h-14 px-4">
+            <span className="flex items-center gap-1 text-base">
+              <BiSolidNavigation className="w-5 h-5" />
+              Краснодар
+            </span>
+            <button className="w-8 h-8" onClick={() => setIsMenuOpen(false)}>
+              <RxCross2 className="w-7 h-7" />
             </button>
           </div>
-          <div className="flex-1 overflow-y-auto">
-            <Tab
-              onToggle={() => setIsCatalogOpen(prev => !prev)}
-              isOpen={isCatalogOpen}
-            />
+
+          <div className="px-4 py-3">
+            <button className="w-full bg-[#e84545] text-white rounded-md py-3 text-base font-semibold shadow hover:bg-[#d02b2b] transition">
+              Каталог
+            </button>
           </div>
+
+          <div className="flex flex-col gap-1 px-4 pb-3">
+            <Link href="#" className="flex items-center gap-3 py-2 text-sm">
+              <CiUser className="w-6 h-6" /> Кабинет
+            </Link>
+            <Link href="#" className="flex items-center gap-3 py-2 text-sm">
+              <CiHeart className="w-6 h-6" /> Избранное
+            </Link>
+            <Link
+              href="#"
+              className="flex items-center gap-3 py-2 text-sm relative"
+            >
+              <Cart items={1} className="w-6 h-6" />
+              Корзина
+            </Link>
+          </div>
+
+          <div className="border-t border-grey-100/10 my-2" />
+
+          <div className="flex flex-col gap-2 px-4 py-3">
+            <Link
+              href="#"
+              className="flex items-center gap-2 bg-[#222228] text-white rounded px-2 py-1 text-sm w-max font-medium"
+            >
+              <AiFillDollarCircle className="w-4 h-4 text-[#ddddd7]" />
+              Trade-in
+            </Link>
+            <Link href="#" className="flex items-center gap-2 py-2 text-sm">
+              <BsLightningChargeFill className="w-5 h-5 text-[#222228]" />
+              Ремонт
+            </Link>
+            <Link href="#" className="py-2 text-sm">
+              Акции
+            </Link>
+            <Link
+              href="#"
+              className="py-2 text-sm flex items-center justify-between"
+            >
+              Услуги
+              <ArrowSvg className="w-2 h-2 transform rotate-180" />
+            </Link>
+            <Link
+              href="#"
+              className="py-2 text-sm flex items-center justify-between"
+            >
+              Компания
+              <ArrowSvg className="w-2 h-2 transform rotate-180" />
+            </Link>
+            <Link href="#" className="py-2 text-sm">
+              Магазин
+            </Link>
+          </div>
+
+          <div className="border-t border-grey-100/10 my-2" />
+
+          <div className="px-4 py-3 text-sm flex flex-col gap-2">
+            <Link
+              href="tel:+79184455111"
+              className="py-2 text-base flex items-center justify-between"
+            >
+              +7 (918) 44-55-111
+              <ArrowSvg className="w-2 h-2 transform rotate-180" />
+            </Link>
+            <div>г. Краснодар, OZ Молл, 2 этаж</div>
+            <Link href="#" className="flex items-center gap-2 mt-2">
+              <FaWhatsapp className="w-6 h-6 text-green " />
+            </Link>
+          </div>
+
+          <div className="border-t border-grey-100/10 my-2" />
+
+          <button className="flex items-center gap-2 px-4 py-3 text-base">
+            <RiSunFill className="w-5 h-5" /> Темная тема
+          </button>
         </div>
       </Dialog>
     </div>

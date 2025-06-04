@@ -23,7 +23,8 @@ module.exports = {
         100: "#dc2f2f"
       },
       black: "#000",
-      orange: "#FF6600"
+      orange: "#FF6600",
+      green: "#00B140",
     },
     extend: {
       fontFamily: {
