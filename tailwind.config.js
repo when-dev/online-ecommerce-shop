@@ -25,8 +25,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        regular: ["Vodafone Rg", "sans"],
-        light: ["Vodafone Lt", "sans"]
+        regular: ["Golos Text", "sans-serif"],
+        light: ["Golos Text", "sans-serif"]
       },
       screens: {
         sm: "480px",

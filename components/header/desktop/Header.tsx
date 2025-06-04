@@ -1,100 +1,153 @@
 import { FC } from "react";
+import Link from "next/link";
 import Input from "components/Input";
 import Cart from "./Cart";
-import Link from "next/link";
-import GeoIcon from "public/img/geo-point.svg";
 import Logo from "public/img/logo.svg";
-import ArrowIcon from "public/img/arrow.svg";
-import { FaThLarge } from "react-icons/fa";
-import { CiBookmark, CiUser } from "react-icons/ci";
+import { CiUser, CiHeart, CiShoppingCart } from "react-icons/ci";
+import { FaApple } from "react-icons/fa";
+import { BsPhone } from "react-icons/bs";
+import { IoTabletLandscapeSharp, IoWatchOutline } from "react-icons/io5";
+import { MdLaptopChromebook } from "react-icons/md";
+import { PiDotsNineBold } from "react-icons/pi";
+import { BsNintendoSwitch } from "react-icons/bs";
+import { CgGames } from "react-icons/cg";
+import { TbBrandBeats } from "react-icons/tb";
+import { AiFillDollarCircle } from "react-icons/ai";
+import { BsLightningChargeFill } from "react-icons/bs";
+import { BiSolidNavigation } from "react-icons/bi";
+import { RiSunFill } from "react-icons/ri";
 
-const staticLinks = [
-  { name: "Доставка и оплата", link: "/" },
-  { name: "Гарантия", link: "/" },
-  { name: "Акции", link: "/" },
-  { name: "Магазины", link: "/" }
+const headerTopLinks = [
+  { name: "Trade-in", link: "#" },
+  { name: "Ремонт", link: "#" },
+  { name: "Акции", link: "#" },
+  { name: "Как купить", link: "#" },
+  { name: "Услуги", link: "#" },
+  { name: "Компания", link: "#" },
+  { name: "Магазины", link: "#" }
 ];
 
-const DesktopMenu: FC = () => {
+const headerBottomLinks = [
+  { name: "Apple", icon: <FaApple /> },
+  { name: "Samsung", icon: <BsPhone /> },
+  { name: "Galaxy Tab", icon: <IoTabletLandscapeSharp /> },
+  { name: "Laptops", icon: <MdLaptopChromebook /> },
+  { name: "Watch", icon: <IoWatchOutline /> },
+  { name: "Beats", icon: <TbBrandBeats /> },
+  { name: "Nintendo Switch", icon: <BsNintendoSwitch /> },
+  { name: "PlayStation", icon: <CgGames /> }
+];
+
+const DesktopHeader: FC = () => {
   return (
     <div className="hidden lg:flex flex-col w-full">
-      <div className="bg-grey-50 text-grey-500 w-full border-b border-grey-100">
-        <div className="flex justify-between items-center h-12 max-w-7xl mx-auto text-sm px-4">
-          <div className="flex items-center min-w-max">
-            <Link href="/" className="w-20">
-              <Logo />
-            </Link>
-            <div className="flex items-center space-x-3 ml-12">
-              <button className="flex items-center hover:text-orange transition-colors text-sm">
-                <GeoIcon className="w-3 h-3 mr-1" />
-                Краснодар
-                <ArrowIcon className="w-2 h-2 ml-1 rotate-[270deg]" />
-              </button>
-              <a
-                href="tel:+79287775680"
-                className="text-sm text-grey-500 hover:text-orange transition-colors"
-              >
-                +7 (928) 777-56-80
-              </a>
-            </div>
-          </div>
+      <div className="text-[#333] w-full text-sm h-10 flex items-center select-none">
+        <div className="max-w-7xl mx-auto flex justify-between w-full px-4">
+          <button className="flex items-center gap-2 text-xs">
+            <BiSolidNavigation />
+            Краснодар
+          </button>
           <div className="flex items-center space-x-6">
-            {staticLinks.map(({ name, link }) => (
-              <Link
-                href={link}
-                key={name}
-                className="text-sm text-grey-500 hover:text-orange transition-colors"
-              >
-                {name}
-              </Link>
-            ))}
+            {headerTopLinks.map(({ name, link }) =>
+              name === "Trade-in" ? (
+                <Link
+                  key={name}
+                  href={link}
+                  className="flex items-center gap-1 bg-[#222228] text-white rounded px-2 py-0.5 text-xs"
+                  style={{ lineHeight: "22px" }}
+                >
+                  <AiFillDollarCircle className="w-4 h-4 text-[#ddddd7]" />
+                  {name}
+                </Link>
+              ) : name === "Ремонт" ? (
+                <Link
+                  key={name}
+                  href={link}
+                  className="flex items-center gap-1 text-xs hover:text-[#222228]/70"
+                >
+                  <BsLightningChargeFill className="w-4 h-4 text-[#222228]" />
+                  {name}
+                </Link>
+              ) : (
+                <Link
+                  href={link}
+                  key={name}
+                  className="transition-colors text-xs hover:text-[#222228]/70"
+                >
+                  {name}
+                </Link>
+              )
+            )}
+          </div>
+          <div className="flex items-center space-x-4">
+            <a
+              href="tel:+79184455111"
+              className="text-xs font-semibold hover:text-[#222228]/70"
+            >
+              +7 (928) 777-55-11
+            </a>
+            <a href="#" className="transition text-xs hover:text-[#222228]/70">
+              Заказать звонок
+            </a>
+          </div>
+          <div className="flex items-center">
+            <button className="text-md">
+              <RiSunFill />
+            </button>
           </div>
         </div>
       </div>
 
-      <div className="bg-white h-16 mt-2 shadow-sm">
-        <div className="grid grid-cols-[auto_1fr_auto] gap-2 items-center h-full max-w-7xl mx-auto px-2 sm:px-4 w-full">
-          <div className="min-w-[170px] max-w-[210px]">
-            <button
-              className="
-                hidden md:flex
-                items-center w-full whitespace-nowrap 
-                border border-orange rounded-md 
-                text-orange text-sm xl:text-md font-regular
-                hover:bg-orange hover:border-orange hover:text-white
-                transition-colors
-                px-6 py-2
-              "
-            >
-              <FaThLarge className="w-4 h-4 mr-2" />
-              Каталог товаров
-            </button>
+      <div className="bg-white shadow-sm h-[80px] flex items-center w-full">
+        <div className="max-w-7xl mx-auto flex w-full px-4 items-center">
+          <Link href="/" className="flex items-center mr-6 min-w-[120px]">
+            <Logo className="w-32 h-auto" />
+          </Link>
+          <button
+            className="
+              flex items-center bg-[#e84545] hover:bg-[#d02b2b]
+              text-white font-medium rounded-md px-5 py-3 mr-6
+              text-base transition
+            "
+          >
+            <PiDotsNineBold className="w-6 h-6 mr-2" />
+            Каталог
+          </button>
+          <div className="flex-1 mr-6">
+            <Input placeholder="Искать: sony" type="text" error={false} />
           </div>
-          <div className="flex justify-center w-full px-2">
-            <div className="w-full max-w-xl">
-              <Input placeholder="Поиск по товарам" type="text" error={false} />
-            </div>
-          </div>
-          <div className="flex items-center space-x-8 min-w-max">
-            <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors">
-              <CiUser className="w-6 h-6" />
+          <div className="flex items-center space-x-7">
+            <button className="flex flex-col items-center text-[#222] hover:text-[#222]/70 transition">
+              <CiUser className="w-7 h-7" />
               <span className="text-xs">Войти</span>
             </button>
-            <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors">
-              <CiBookmark className="w-6 h-6" />
+            <button className="flex flex-col items-center text-[#222] hover:text-[#222]/70 transition">
+              <CiHeart className="w-7 h-7" />
               <span className="text-xs">Избранное</span>
             </button>
-            <Link href="/">
-              <button className="flex flex-col items-center text-grey-500 hover:text-orange transition-colors">
-                <Cart items={3} className="w-6 h-6" />
-                <span className="text-xs">Корзина</span>
-              </button>
-            </Link>
+            <button className="flex flex-col items-center text-[#222] hover:text-[#222]/70 transition">
+              <Cart items={1} className="w-7 h-7" />
+              <span className="text-xs">Корзина</span>
+            </button>
           </div>
+        </div>
+      </div>
+
+      <div className="bg-white border-b border-[#e1e1e1] h-[44px]">
+        <div className="max-w-7xl mx-auto flex items-center h-full px-4 space-x-8">
+          {headerBottomLinks.map(({ name, icon }) => (
+            <button
+              key={name}
+              className="flex items-center text-sm text-[#222] hover:text-[#222]/70 transition"
+            >
+              <span className="mr-1">{icon}</span>
+              {name}
+            </button>
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default DesktopMenu;
+export default DesktopHeader;

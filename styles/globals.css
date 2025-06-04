@@ -3,18 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Vodafone Rg";
-  src: url("/font/Vodafone-rg.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Vodafone Lt";
-  src: url("/font/Vodafone-lt.ttf") format("truetype");
+  font-family: "Golos Text";
+  src: url("/font/GolosText-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 html,
 body {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   padding: 0;
   margin: 0;
 }
@@ -63,7 +61,8 @@ button {
 .banner-hover-gradient::before {
   content: "";
   position: absolute;
-  left: 0; top: 0;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 70%;
   pointer-events: none;
@@ -72,9 +71,9 @@ button {
   z-index: 30;
   background: linear-gradient(
     to bottom,
-    rgba(255,255,255,0.30) 0%,
-    rgba(255,255,255,0.10) 70%,
-    rgba(255,255,255,0) 100%
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 70%,
+    rgba(255, 255, 255, 0) 100%
   );
 }
 
