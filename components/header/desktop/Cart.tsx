@@ -7,7 +7,7 @@ const Cart: FC<{ items?: number; className?: string }> = ({ items, className }) 
   return (
     <div className={`relative flex items-center justify-center ${className || ""}`}>
       {showBadge && (
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-orange rounded-full text-white text-[10px] flex items-center justify-center z-10">
+        <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-100 rounded-full text-white text-[10px] flex items-center justify-center z-10">
           {Math.min(items, 99)}
         </div>
       )}
