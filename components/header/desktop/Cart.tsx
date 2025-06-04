@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { PiShoppingCartLight } from "react-icons/pi";
 import { FiShoppingCart } from "react-icons/fi";
+
+
 const Cart: FC<{ items?: number; className?: string }> = ({ items, className }) => {
   const showBadge = typeof items === "number" && items > 0;
 
