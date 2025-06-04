@@ -6,7 +6,7 @@ import Cart from "../desktop/Cart";
 const navItems = [
   { href: "/", label: "Главная", icon: <CiHome className='w-6 h-6' /> },
   { href: "/", label: "Каталог", icon: <CiCircleList className='w-6 h-6' /> },
-  { href: "/", label: "Корзина", icon: <Cart items={3} className='w-6 h-6' /> },
+  { href: "/", label: "Корзина", icon: <Cart items={1} className='w-6 h-6' /> },
   { href: "/", label: "Избранное", icon: <CiBookmark className='w-6 h-6' /> },
   { href: "/", label: "Войти", icon: <CiUser className='w-6 h-6' /> }
 ];

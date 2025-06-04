@@ -118,7 +118,7 @@ const MobileMenu: FC = () => {
 
           <div className="border-t border-grey-100/10 my-2" />
 
-          <button className="flex items-center gap-2 px-4 py-3 text-base">
+          <button className="flex items-center gap-2 px-4 py-2 text-base">
             <RiSunFill className="w-5 h-5" /> Темная тема
           </button>
         </div>
