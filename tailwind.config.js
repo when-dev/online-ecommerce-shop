@@ -19,14 +19,17 @@ module.exports = {
         650: "#303233",
         transparent: "#333333a6"
       },
-      red: "#FF0000",
+      red: {
+        100: "#dc2f2f"
+      },
       black: "#000",
-      orange: "#FF6600"
+      orange: "#FF6600",
+      green: "#00B140",
     },
     extend: {
       fontFamily: {
-        regular: ["Vodafone Rg", "sans"],
-        light: ["Vodafone Lt", "sans"]
+        regular: ["Golos Text", "sans-serif"],
+        light: ["Golos Text", "sans-serif"]
       },
       screens: {
         sm: "480px",

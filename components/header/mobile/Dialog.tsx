@@ -11,27 +11,27 @@ const Dialog: FC<{
   return (
     <div
       className={`
-				fixed inset-0 z-[100] flex
-				${opened ? "pointer-events-auto" : "pointer-events-none"}
-			`}
+        fixed inset-0 z-[100] flex
+        ${opened ? "pointer-events-auto" : "pointer-events-none"}
+      `}
       onClick={closeDialog}
     >
       <div
         className={`
-					absolute inset-0 bg-black transition-opacity duration-300
-					${opened ? "opacity-50" : "opacity-0"}
-				`}
+          absolute inset-0 bg-black transition-opacity duration-300
+          ${opened ? "opacity-50" : "opacity-0"}
+        `}
       />
       <div
         onClick={stopPropagation}
         className={`
-					h-full bg-white shadow-lg fixed top-0 left-0
-					transform transition-transform duration-300 ease-in-out
-					${opened ? "translate-x-0" : "-translate-x-full"}
-					w-full md:w-[400px]
-				`}
+          h-full bg-white shadow-lg fixed top-0 left-0
+          transform transition-transform duration-300 ease-in-out
+          ${opened ? "translate-x-0" : "-translate-x-full"}
+          w-full sm:w-[350px] sm:max-w-[90vw] flex flex-col
+        `}
       >
-        {children}
+        <div className="flex-1 min-h-0 overflow-y-auto">{children}</div>
       </div>
     </div>
   );
