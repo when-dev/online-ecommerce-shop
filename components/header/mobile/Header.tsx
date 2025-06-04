@@ -104,10 +104,10 @@ const MobileMenu: FC = () => {
 
           <div className="px-4 py-3 text-sm flex flex-col gap-2">
             <Link
-              href="tel:+79184455111"
+              href="tel:+79287775511"
               className="py-2 text-base flex items-center justify-between"
             >
-              +7 (918) 44-55-111
+              +7 (928) 777-55-11
               <ArrowSvg className="w-2 h-2 transform rotate-180" />
             </Link>
             <div>г. Краснодар, OZ Молл, 2 этаж</div>
