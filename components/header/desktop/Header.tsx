@@ -114,14 +114,15 @@ const DesktopHeader: FC = () => {
 
       <div className="bg-white border-b border-[#e1e1e1] h-[44px]">
         <div className="max-w-7xl mx-auto flex items-center h-full px-4 space-x-8">
-          {headerDesktopBottomLinks.map(({ name, icon }) => (
-            <button
+          {headerDesktopBottomLinks.map(({ name, icon, href }) => (
+            <Link
               key={name}
+              href={href}
               className="flex items-center text-sm text-[#222] hover:text-[#222]/70 transition"
             >
               <span className="mr-1">{icon}</span>
               {name}
-            </button>
+            </Link>
           ))}
         </div>
       </div>
