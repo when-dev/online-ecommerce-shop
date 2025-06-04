@@ -1,17 +1,20 @@
-import { FC, useState } from "react";
 import Link from "next/link";
-import Dialog from "./Dialog";
-import Logo from "public/img/logo.svg";
-import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
-import { CiSearch, CiUser, CiHeart } from "react-icons/ci";
-import { MdOutlineCompare } from "react-icons/md";
-import { AiFillDollarCircle } from "react-icons/ai";
-import { BsLightningChargeFill } from "react-icons/bs";
-import { BiSolidNavigation } from "react-icons/bi";
-import { RiSunFill } from "react-icons/ri";
-import { FaWhatsapp } from "react-icons/fa";
 import ArrowSvg from "public/img/arrow.svg";
+import Logo from "public/img/logo.svg";
+import { FC, useState } from "react";
+import {
+  AiFillDollarCircle,
+  AiOutlineHeart,
+  AiOutlineUser
+} from "react-icons/ai";
+import { BiSolidNavigation } from "react-icons/bi";
+import { BsLightningChargeFill } from "react-icons/bs";
+import { CiSearch } from "react-icons/ci";
+import { FaWhatsapp } from "react-icons/fa";
+import { RiSunFill } from "react-icons/ri";
+import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 import Cart from "../desktop/Cart";
+import Dialog from "./Dialog";
 
 const MobileMenu: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,10 +53,10 @@ const MobileMenu: FC = () => {
 
           <div className="flex flex-col gap-1 px-4 pb-3">
             <Link href="#" className="flex items-center gap-3 py-2 text-sm">
-              <CiUser className="w-6 h-6" /> Кабинет
+              <AiOutlineUser className="w-6 h-6" /> Кабинет
             </Link>
             <Link href="#" className="flex items-center gap-3 py-2 text-sm">
-              <CiHeart className="w-6 h-6" /> Избранное
+              <AiOutlineHeart className="w-6 h-6" /> Избранное
             </Link>
             <Link
               href="#"

@@ -1,21 +1,27 @@
-import { FC } from "react";
-import Link from "next/link";
 import Input from "components/Input";
-import Cart from "./Cart";
+import Link from "next/link";
 import Logo from "public/img/logo.svg";
-import { CiUser, CiHeart, CiShoppingCart } from "react-icons/ci";
+import { FC } from "react";
+import {
+  AiFillDollarCircle,
+  AiOutlineHeart,
+  AiOutlineUser
+} from "react-icons/ai";
+import { BiSolidNavigation } from "react-icons/bi";
+import {
+  BsLightningChargeFill,
+  BsNintendoSwitch,
+  BsPhone
+} from "react-icons/bs";
+import { CgGames } from "react-icons/cg";
 import { FaApple } from "react-icons/fa";
-import { BsPhone } from "react-icons/bs";
 import { IoTabletLandscapeSharp, IoWatchOutline } from "react-icons/io5";
 import { MdLaptopChromebook } from "react-icons/md";
 import { PiDotsNineBold } from "react-icons/pi";
-import { BsNintendoSwitch } from "react-icons/bs";
-import { CgGames } from "react-icons/cg";
-import { TbBrandBeats } from "react-icons/tb";
-import { AiFillDollarCircle } from "react-icons/ai";
-import { BsLightningChargeFill } from "react-icons/bs";
-import { BiSolidNavigation } from "react-icons/bi";
 import { RiSunFill } from "react-icons/ri";
+import { TbBrandBeats } from "react-icons/tb";
+
+import Cart from "./Cart";
 
 const headerTopLinks = [
   { name: "Trade-in", link: "#" },
@@ -118,15 +124,15 @@ const DesktopHeader: FC = () => {
           </div>
           <div className="flex items-center space-x-7">
             <button className="flex flex-col items-center text-[#222] hover:text-[#222]/70 transition">
-              <CiUser className="w-7 h-7" />
+              <AiOutlineUser className="w-6 h-6" />
               <span className="text-xs">Войти</span>
             </button>
             <button className="flex flex-col items-center text-[#222] hover:text-[#222]/70 transition">
-              <CiHeart className="w-7 h-7" />
+              <AiOutlineHeart className="w-6 h-6" />
               <span className="text-xs">Избранное</span>
             </button>
             <button className="flex flex-col items-center text-[#222] hover:text-[#222]/70 transition">
-              <Cart items={1} className="w-7 h-7" />
+              <Cart items={1} className="w-6 h-6" />
               <span className="text-xs">Корзина</span>
             </button>
           </div>

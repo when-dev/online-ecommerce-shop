@@ -1,14 +1,14 @@
-import Link from "next/link";
+import Link from "next/link"
 // import { useRouter } from "next/router";
-import { CiBookmark, CiUser, CiCircleList, CiHome } from "react-icons/ci";
-import Cart from "../desktop/Cart";
+import { CiBookmark, CiCircleList, CiHome, CiUser } from "react-icons/ci"
+import Cart from "../desktop/Cart"
 
 const navItems = [
-  { href: "/", label: "Главная", icon: <CiHome className='w-6 h-6' /> },
-  { href: "/", label: "Каталог", icon: <CiCircleList className='w-6 h-6' /> },
-  { href: "/", label: "Корзина", icon: <Cart items={1} className='w-6 h-6' /> },
-  { href: "/", label: "Избранное", icon: <CiBookmark className='w-6 h-6' /> },
-  { href: "/", label: "Войти", icon: <CiUser className='w-6 h-6' /> }
+  { href: "/", label: "Главная", icon: <CiHome className="w-6 h-6" /> },
+  { href: "/", label: "Каталог", icon: <CiCircleList className="w-6 h-6" /> },
+  { href: "/", label: "Корзина", icon: <Cart items={1} className="w-6 h-6" /> },
+  { href: "/", label: "Избранное", icon: <CiBookmark className="w-6 h-6" /> },
+  { href: "/", label: "Войти", icon: <CiUser className="w-6 h-6" /> }
 ];
 
 const BottomBar = () => {
@@ -23,7 +23,7 @@ const BottomBar = () => {
           href={item.href}
           className="flex flex-col items-center flex-1 py-1"
         >
-          <span className="mb-0.5 mt-1.5 flex items-center justify-center"> 
+          <span className="mb-0.5 mt-1.5 flex items-center justify-center">
             {item.icon}
           </span>
           <span className="text-xs">{item.label}</span>
