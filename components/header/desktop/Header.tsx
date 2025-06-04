@@ -85,7 +85,7 @@ const DesktopHeader: FC = () => {
           <button
             className="
               flex items-center bg-[#e84545] hover:bg-[#d02b2b]
-              text-white font-medium rounded-md px-5 py-3 mr-6
+              text-white font-medium rounded-md px-5 py-2.5 mr-6
               text-base transition
             "
           >
