@@ -1,20 +1,75 @@
 import Link from "next/link";
-import ArrowSvg from "public/img/arrow.svg";
 import Logo from "public/img/logo.svg";
 import { FC, useState } from "react";
-import {
-  AiFillDollarCircle,
-  AiOutlineHeart,
-  AiOutlineUser
-} from "react-icons/ai";
 import { BiSolidNavigation } from "react-icons/bi";
-import { BsLightningChargeFill } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
 import { FaWhatsapp } from "react-icons/fa";
 import { RiSunFill } from "react-icons/ri";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
-import Cart from "../desktop/Cart";
 import Dialog from "./Dialog";
+import {
+  AiOutlineUser,
+  AiOutlineHeart,
+  AiFillDollarCircle
+} from "react-icons/ai";
+import { BsLightningChargeFill } from "react-icons/bs";
+import Cart from "../desktop/Cart";
+import ArrowSvg from "public/img/arrow.svg";
+
+const userLinks = [
+  {
+    href: "#",
+    label: "Кабинет",
+    icon: <AiOutlineUser className="w-6 h-6" />
+  },
+  {
+    href: "#",
+    label: "Избранное",
+    icon: <AiOutlineHeart className="w-6 h-6" />
+  },
+  {
+    href: "#",
+    label: "Корзина",
+    icon: <Cart items={1} className="w-6 h-6" />
+  }
+];
+
+const serviceLinks = [
+  {
+    href: "#",
+    label: (
+      <span className="flex items-center gap-2 bg-[#222228] text-white rounded text-sm w-max font-medium"> 
+        <AiFillDollarCircle className="w-4 h-4 text-[#ddddd7]" />
+        Trade-in
+      </span>
+    ),
+    className:
+      "bg-[#222228] text-white rounded px-2 py-1 text-sm w-max font-medium"
+  },
+  {
+    href: "#",
+    label: "Ремонт",
+    icon: <BsLightningChargeFill className="w-5 h-5 text-[#222228]" />
+  },
+  {
+    href: "#",
+    label: "Акции"
+  },
+  {
+    href: "#",
+    label: "Услуги",
+    rightIcon: <ArrowSvg className="w-2 h-2 transform rotate-180" />
+  },
+  {
+    href: "#",
+    label: "Компания",
+    rightIcon: <ArrowSvg className="w-2 h-2 transform rotate-180" />
+  },
+  {
+    href: "#",
+    label: "Магазин"
+  }
+];
 
 const MobileMenu: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,55 +107,45 @@ const MobileMenu: FC = () => {
           </div>
 
           <div className="flex flex-col gap-1 px-4 pb-3">
-            <Link href="#" className="flex items-center gap-3 py-2 text-sm">
-              <AiOutlineUser className="w-6 h-6" /> Кабинет
-            </Link>
-            <Link href="#" className="flex items-center gap-3 py-2 text-sm">
-              <AiOutlineHeart className="w-6 h-6" /> Избранное
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 py-2 text-sm relative"
-            >
-              <Cart items={1} className="w-6 h-6" />
-              Корзина
-            </Link>
+            {userLinks.map(item => (
+              <Link
+                key={
+                  typeof item.label === "string"
+                    ? item.label
+                    : JSON.stringify(item.label)
+                }
+                href={item.href}
+                className="flex items-center gap-3 py-2 text-sm"
+              >
+                {item.icon}
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           <div className="border-t border-grey-100/10 my-2" />
 
           <div className="flex flex-col gap-2 px-4 py-3">
-            <Link
-              href="#"
-              className="flex items-center gap-2 bg-[#222228] text-white rounded px-2 py-1 text-sm w-max font-medium"
-            >
-              <AiFillDollarCircle className="w-4 h-4 text-[#ddddd7]" />
-              Trade-in
-            </Link>
-            <Link href="#" className="flex items-center gap-2 py-2 text-sm">
-              <BsLightningChargeFill className="w-5 h-5 text-[#222228]" />
-              Ремонт
-            </Link>
-            <Link href="#" className="py-2 text-sm">
-              Акции
-            </Link>
-            <Link
-              href="#"
-              className="py-2 text-sm flex items-center justify-between"
-            >
-              Услуги
-              <ArrowSvg className="w-2 h-2 transform rotate-180" />
-            </Link>
-            <Link
-              href="#"
-              className="py-2 text-sm flex items-center justify-between"
-            >
-              Компания
-              <ArrowSvg className="w-2 h-2 transform rotate-180" />
-            </Link>
-            <Link href="#" className="py-2 text-sm">
-              Магазин
-            </Link>
+            {serviceLinks.map(item => (
+              <Link
+                key={
+                  typeof item.label === "string"
+                    ? item.label
+                    : JSON.stringify(item.label)
+                }
+                href={item.href}
+                className={
+                  "flex items-center gap-2 py-2 text-sm " +
+                  (item.className || "")
+                }
+              >
+                {item.icon}
+                {item.label}
+                {item.rightIcon && (
+                  <span className="ml-auto">{item.rightIcon}</span>
+                )}
+              </Link>
+            ))}
           </div>
 
           <div className="border-t border-grey-100/10 my-2" />
