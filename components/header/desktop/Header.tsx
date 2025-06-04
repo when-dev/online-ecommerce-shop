@@ -8,41 +8,14 @@ import {
   AiOutlineUser
 } from "react-icons/ai";
 import { BiSolidNavigation } from "react-icons/bi";
-import {
-  BsLightningChargeFill,
-  BsNintendoSwitch,
-  BsPhone
-} from "react-icons/bs";
-import { CgGames } from "react-icons/cg";
-import { FaApple } from "react-icons/fa";
-import { IoTabletLandscapeSharp, IoWatchOutline } from "react-icons/io5";
-import { MdLaptopChromebook } from "react-icons/md";
+import { BsLightningChargeFill } from "react-icons/bs";
 import { PiDotsNineBold } from "react-icons/pi";
 import { RiSunFill } from "react-icons/ri";
-import { TbBrandBeats } from "react-icons/tb";
-
+import {
+  headerDesktopTopLinks,
+  headerDesktopBottomLinks
+} from "constants/navLinks";
 import Cart from "./Cart";
-
-const headerTopLinks = [
-  { name: "Trade-in", link: "#" },
-  { name: "Ремонт", link: "#" },
-  { name: "Акции", link: "#" },
-  { name: "Как купить", link: "#" },
-  { name: "Услуги", link: "#" },
-  { name: "Компания", link: "#" },
-  { name: "Магазины", link: "#" }
-];
-
-const headerBottomLinks = [
-  { name: "Apple", icon: <FaApple /> },
-  { name: "Samsung", icon: <BsPhone /> },
-  { name: "Galaxy Tab", icon: <IoTabletLandscapeSharp /> },
-  { name: "Laptops", icon: <MdLaptopChromebook /> },
-  { name: "Watch", icon: <IoWatchOutline /> },
-  { name: "Beats", icon: <TbBrandBeats /> },
-  { name: "Nintendo Switch", icon: <BsNintendoSwitch /> },
-  { name: "PlayStation", icon: <CgGames /> }
-];
 
 const DesktopHeader: FC = () => {
   return (
@@ -54,7 +27,7 @@ const DesktopHeader: FC = () => {
             Краснодар
           </button>
           <div className="flex items-center space-x-6">
-            {headerTopLinks.map(({ name, link }) =>
+            {headerDesktopTopLinks.map(({ name, link }) =>
               name === "Trade-in" ? (
                 <Link
                   key={name}
@@ -141,7 +114,7 @@ const DesktopHeader: FC = () => {
 
       <div className="bg-white border-b border-[#e1e1e1] h-[44px]">
         <div className="max-w-7xl mx-auto flex items-center h-full px-4 space-x-8">
-          {headerBottomLinks.map(({ name, icon }) => (
+          {headerDesktopBottomLinks.map(({ name, icon }) => (
             <button
               key={name}
               className="flex items-center text-sm text-[#222] hover:text-[#222]/70 transition"

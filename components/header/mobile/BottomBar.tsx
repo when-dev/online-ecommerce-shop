@@ -1,16 +1,7 @@
 import Link from "next/link"
 // import { useRouter } from "next/router";
-import { RiHome2Line, RiListUnordered  } from "react-icons/ri";
-import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
+import { bottomBarLinks } from 'constants/navLinks';
 import Cart from "../desktop/Cart"
-
-const navItemsLinks = [
-  { href: "/", label: "Главная", icon: <RiHome2Line className="w-6 h-6" /> },
-  { href: "/", label: "Каталог", icon: <RiListUnordered  className="w-6 h-6" /> },
-  { href: "/", label: "Корзина", icon: <Cart items={1} className="w-6 h-6" /> },
-  { href: "/", label: "Избранное", icon: <AiOutlineHeart className="w-6 h-6" /> },
-  { href: "/", label: "Войти", icon: <AiOutlineUser className="w-6 h-6" /> }
-];
 
 const BottomBar = () => {
   // TODO: add router for active link highlighting
@@ -18,7 +9,7 @@ const BottomBar = () => {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-grey-200 flex justify-between items-center px-2 py-1 mb-1.5 lg:hidden shadow-[0_-5px_5px_-5px_rgba(0,0,0,0.1)]">
-      {navItemsLinks.map(item => (
+      {bottomBarLinks.map(item => (
         <Link
           key={item.label}
           href={item.href}

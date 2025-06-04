@@ -6,70 +6,12 @@ import { CiSearch } from "react-icons/ci";
 import { FaWhatsapp } from "react-icons/fa";
 import { RiSunFill } from "react-icons/ri";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
-import Dialog from "./Dialog";
 import {
-  AiOutlineUser,
-  AiOutlineHeart,
-  AiFillDollarCircle
-} from "react-icons/ai";
-import { BsLightningChargeFill } from "react-icons/bs";
-import Cart from "../desktop/Cart";
+  headerMobileServiceLinks,
+  headerMobileUserLinks
+} from "constants/navLinks";
 import ArrowSvg from "public/img/arrow.svg";
-
-const userLinks = [
-  {
-    href: "#",
-    label: "Кабинет",
-    icon: <AiOutlineUser className="w-6 h-6" />
-  },
-  {
-    href: "#",
-    label: "Избранное",
-    icon: <AiOutlineHeart className="w-6 h-6" />
-  },
-  {
-    href: "#",
-    label: "Корзина",
-    icon: <Cart items={1} className="w-6 h-6" />
-  }
-];
-
-const serviceLinks = [
-  {
-    href: "#",
-    label: (
-      <span className="flex items-center gap-2 bg-[#222228] text-white rounded text-sm w-max font-medium"> 
-        <AiFillDollarCircle className="w-4 h-4 text-[#ddddd7]" />
-        Trade-in
-      </span>
-    ),
-    className:
-      "bg-[#222228] text-white rounded px-2 py-1 text-sm w-max font-medium"
-  },
-  {
-    href: "#",
-    label: "Ремонт",
-    icon: <BsLightningChargeFill className="w-5 h-5 text-[#222228]" />
-  },
-  {
-    href: "#",
-    label: "Акции"
-  },
-  {
-    href: "#",
-    label: "Услуги",
-    rightIcon: <ArrowSvg className="w-2 h-2 transform rotate-180" />
-  },
-  {
-    href: "#",
-    label: "Компания",
-    rightIcon: <ArrowSvg className="w-2 h-2 transform rotate-180" />
-  },
-  {
-    href: "#",
-    label: "Магазин"
-  }
-];
+import Dialog from "./Dialog";
 
 const MobileMenu: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -107,7 +49,7 @@ const MobileMenu: FC = () => {
           </div>
 
           <div className="flex flex-col gap-1 px-4 pb-3">
-            {userLinks.map(item => (
+            {headerMobileUserLinks.map(item => (
               <Link
                 key={
                   typeof item.label === "string"
@@ -126,7 +68,7 @@ const MobileMenu: FC = () => {
           <div className="border-t border-grey-100/10 my-2" />
 
           <div className="flex flex-col gap-2 px-4 py-3">
-            {serviceLinks.map(item => (
+            {headerMobileServiceLinks.map(item => (
               <Link
                 key={
                   typeof item.label === "string"
