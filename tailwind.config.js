@@ -19,7 +19,9 @@ module.exports = {
         650: "#303233",
         transparent: "#333333a6"
       },
-      red: "#FF0000",
+      red: {
+        100: "#dc2f2f"
+      },
       black: "#000",
       orange: "#FF6600"
     },
