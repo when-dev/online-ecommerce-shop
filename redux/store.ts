@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import submenuReducer from "./slices/submenu/submenuSlices";
 
 export const store = configureStore({
 	reducer: {
-
+		submenu: submenuReducer,
 	}
 })
 
