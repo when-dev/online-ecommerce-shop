@@ -24,3 +24,6 @@ const submenuSlice = createSlice({
 		},
 	}
 })
+
+export const { openSubmenu, closeSubmenu } = submenuSlice.actions;
+export default submenuSlice.reducer;
