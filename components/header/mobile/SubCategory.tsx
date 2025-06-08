@@ -47,7 +47,7 @@ const SubCategory: FC<{ categories: Category[] }> = ({ categories }) => {
               }}
               aria-hidden={idx !== slideIndex}
             >
-              <div className="flex items-center h-14 px-4 border-b border-gray-100">
+              <div className="flex items-center h-14 px-4">
                 <button
                   className="flex items-center text-gray-800 text-sm font-normal mr-2"
                   onClick={() =>
