@@ -103,10 +103,7 @@ const MobileMenu: FC = () => {
                       : JSON.stringify(item.label)
                   }
                   href={item.href}
-                  className={
-                    "flex items-center gap-2 py-2 text-sm " +
-                    (item.className || "")
-                  }
+                  className="flex items-center gap-2 py-2 text-sm"
                 >
                   {item.icon}
                   {item.label}

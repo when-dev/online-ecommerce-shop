@@ -49,12 +49,12 @@ const SubCategory: FC<{ categories: Category[] }> = ({ categories }) => {
             >
               <div className="flex items-center h-14 px-4 border-b border-gray-100">
                 <button
-                  className="flex items-center text-gray-800 text-base font-normal mr-2"
+                  className="flex items-center text-gray-800 text-sm font-normal mr-2"
                   onClick={() =>
                     idx === 0 ? dispatch(close()) : dispatch(goBack())
                   }
                 >
-                  <ArrowSvg className="w-4 h-4 mr-1 -rotate-180" />
+                  <ArrowSvg className="w-3 h-3 mr-2" />
                   <span>Назад</span>
                 </button>
                 <div className="flex-1 text-center text-lg font-bold"></div>
@@ -68,7 +68,7 @@ const SubCategory: FC<{ categories: Category[] }> = ({ categories }) => {
               <div className="px-6 pt-5 pb-3">
                 <span className="font-semibold text-lg">{parent.label}</span>
               </div>
-              <nav className="flex-1 overflow-y-auto px-2">
+              <nav className="flex-1 overflow-y-auto px-6">
                 {(parent.children || []).map((cat: Category) => (
                   <Tab
                     key={cat.slug}
