@@ -1,31 +1,44 @@
 import { FC } from "react";
 import ArrowIcon from "public/img/arrow.svg";
 
-const Tab: FC<{ onToggle?: () => void; isOpen?: boolean }> = ({
-  onToggle,
-  isOpen
-}) => {
-  return (
-    <>
-      <button className="flex py-3 px-5 items-center w-full" onClick={onToggle}>
-        <p className="flex-1 text-left text-base">Каталог</p>
-        <span
-          className={`
-            text-grey-400 transform transition-transform duration-300 w-1.5
-            ${isOpen ? "rotate-0" : "-rotate-90"}
-          `}
-        >
-          <ArrowIcon />
+type TabProps = {
+  label: string;
+  isActive?: boolean;
+  hasChildren?: boolean;
+  onClick?: () => void;
+  href?: string;
+};
+
+const Tab: FC<TabProps> = ({ label, isActive, hasChildren, onClick, href }) => {
+  const content = (
+    <div className="flex items-center py-2 px-0 cursor-pointer select-none">
+      <span className={`text-base ${isActive ? "font-bold" : "font-normal"}`}>
+        {label}
+      </span>
+      {hasChildren && (
+        <span className="ml-auto flex items-center">
+          <ArrowIcon className="w-2 h-2 transform rotate-180" />
         </span>
-      </button>
-      {isOpen && (
-        <div className="pl-12 flex flex-col gap-2 text-sm text-left">
-          <button className="py-1 text-left">Телефоны</button>
-          <button className="py-1 text-left">Ноутбуки</button>
-          <button className="py-1 text-left">Планшеты</button>
-        </div>
       )}
-    </>
+    </div>
+  );
+
+  if (href) {
+    return (
+      <a href={href} className="block w-full">
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      className="block w-full text-left bg-transparent"
+      onClick={onClick}
+    >
+      {content}
+    </button>
   );
 };
 

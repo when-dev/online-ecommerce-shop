@@ -76,18 +76,16 @@ export const headerMobileServiceLinks = [
   {
     href: "#",
     label: (
-      <span className="flex items-center gap-2 bg-[#222228] text-white rounded text-sm w-max font-medium">
+      <span className="flex items-center gap-1 bg-[#222228] text-white rounded px-2 py-1 text-xs">
         <AiFillDollarCircle className="w-4 h-4 text-[#ddddd7]" />
         Trade-in
       </span>
     ),
-    className:
-      "bg-[#222228] text-white rounded px-2 py-1 text-sm w-max font-medium"
   },
   {
     href: "#",
     label: "Ремонт",
-    icon: <BsLightningChargeFill className="w-5 h-5 text-[#222228]" />
+    icon: <BsLightningChargeFill className="w-4 h-4 text-[#222228]" />
   },
   {
     href: "#",
