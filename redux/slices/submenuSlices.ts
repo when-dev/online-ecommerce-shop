@@ -3,12 +3,14 @@ import { Category } from "../../constants/categories";
 
 interface SubmenuState {
   stack: Category[];
+  slideIndex: number; 
   isOpen: boolean;
 }
 
 const initialState: SubmenuState = {
   stack: [],
-  isOpen: false
+  slideIndex: 0,
+  isOpen: false,
 };
 
 const submenuSlice = createSlice({
@@ -17,23 +19,29 @@ const submenuSlice = createSlice({
   reducers: {
     openRoot(state, action: PayloadAction<Category[]>) {
       state.stack = [];
+      state.slideIndex = 0;
       state.isOpen = true;
     },
     openCategory(state, action: PayloadAction<Category>) {
       state.stack.push(action.payload);
+      state.slideIndex = state.stack.length;
       state.isOpen = true;
     },
     goBack(state) {
-      if (state.stack.length > 0) {
-        state.stack.pop();
+      if (state.slideIndex > 0) {
+        state.slideIndex -= 1;
       }
+    },
+    popStack(state) {
+      state.stack.pop();
     },
     close(state) {
       state.isOpen = false;
       state.stack = [];
-    }
-  }
+      state.slideIndex = 0;
+    },
+  },
 });
 
-export const { openRoot, openCategory, goBack, close } = submenuSlice.actions;
+export const { openRoot, openCategory, goBack, popStack, close } = submenuSlice.actions;
 export default submenuSlice.reducer;

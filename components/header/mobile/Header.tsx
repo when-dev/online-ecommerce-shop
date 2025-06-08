@@ -22,6 +22,8 @@ const MobileMenu: FC = () => {
   const dispatch = useAppDispatch();
   const submenuIsOpen = useAppSelector(s => s.submenu.isOpen);
 
+  const slideIndex = submenuIsOpen ? 1 : 0;
+
   const handleOpenCatalog = () => {
     dispatch(openRoot(catalogCategories));
     setIsMenuOpen(true);
@@ -47,10 +49,13 @@ const MobileMenu: FC = () => {
       </button>
 
       <Dialog opened={isMenuOpen} onClose={handleClose}>
-        {submenuIsOpen ? (
-          <SubCategory categories={catalogCategories} />
-        ) : (
-          <div className="flex flex-col h-full bg-white w-full">
+        <div
+          className="w-full h-full flex flex-row transition-transform duration-300 ease-in-out"
+          style={{
+            transform: `translateX(-${slideIndex * 100}%)`,
+          }}
+        >
+          <div className="flex-shrink-0 w-full h-full flex flex-col bg-white sm:max-w-[380px] max-w-full">
             <div className="flex items-center justify-between h-14 px-4">
               <span className="flex items-center gap-1 text-base">
                 <BiSolidNavigation className="w-5 h-5" />
@@ -134,7 +139,10 @@ const MobileMenu: FC = () => {
               <RiSunFill className="w-5 h-5" /> Темная тема
             </button>
           </div>
-        )}
+          <div className="flex-shrink-0 w-full h-full flex flex-col bg-white sm:max-w-[380px] max-w-full">
+            {submenuIsOpen && <SubCategory categories={catalogCategories} />}
+          </div>
+        </div>
       </Dialog>
     </div>
   );
